@@ -178,7 +178,7 @@
                 }
             }
         }
-}
+    }
 
     function getXY(evt, offset) {
         var relativeX = (evt.pageX - offset.left);
@@ -353,10 +353,10 @@
         heatmapInstance.data = [];
         showMap(heatmapInstance);
         $('.AddDevice').show();
-        var img = new Image();//$(".prev").get(0).src;
+	    
+        var img = new Image();
         img.src = 'kart.jpg';
 	$('#hidSet').css('height', 30);
-
         $('.map_holder').css("height", "100%");
         $('.mapsDiv').css('overflow','scroll');
         $('.mapsDiv').css("max-height", "100%");
