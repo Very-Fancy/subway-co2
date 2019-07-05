@@ -104,7 +104,8 @@
         $(".par_id").css("height", "100%");
         $(".par_id").css("float", 'left');
         $(".par_id").css("position", 'relative');
-
+	$(".par_id").css("display", 'inline-block');
+	    
         $(".info_map").css("height",$('.par_id').height() - 60);
         $(".info_map").css("width", "100%");
         $(".info_map").css("position", "relative");
