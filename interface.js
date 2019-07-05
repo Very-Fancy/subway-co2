@@ -369,11 +369,13 @@
         $('.htmap').css('float', 'left');
         $('.htmap').css('overflow', 'scroll');
 
+        $('.set_firstpart').css('position', "relative");
+        $('.set_firstpart').css('width', "100%");
+        $('.set_firstpart').hide();
+        
 	    img.onload = function() {
             elems(img);
-            $('.set_firstpart').css('position', "relative");
-            $('.set_firstpart').css('width', "100%");
-            $('.set_firstpart').hide();
+
 
             $('#DynamicExtraFieldsContainer').css('display', 'block');
             $('#DynamicExtraFieldsContainer').css('width', '100%');
