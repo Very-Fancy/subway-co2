@@ -11,6 +11,7 @@
 
     function initStyle(){
         $('.set_firstpart').css("position","absolute");
+	$('.set_firstpart').css("display","none");
         $('.set_firstpart').css("width","100%");
         $('.set_firstpart').css("max-height",window.innerHeight - 40);
     }
@@ -353,8 +354,7 @@
         $('.AddDevice').show();
         var img = new Image();//$(".prev").get(0).src;
         img.src = 'kart.jpg';
-
-	    $('#hidSet').css('height', 30);
+	$('#hidSet').css('height', 30);
 
         $('.map_holder').css("height", "100%");
         $('.mapsDiv').css('overflow','scroll');
@@ -371,11 +371,10 @@
 
         $('.set_firstpart').css('position', "relative");
         $('.set_firstpart').css('width', "100%");
-        $('.set_firstpart').hide();
+        $('.set_firstpart').css('display','none');
         
-	    img.onload = function() {
+	img.onload = function() {
             elems(img);
-
 
             $('#DynamicExtraFieldsContainer').css('display', 'block');
             $('#DynamicExtraFieldsContainer').css('width', '100%');
