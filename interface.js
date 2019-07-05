@@ -11,7 +11,7 @@
 
     function initStyle(){
         $('.set_firstpart').css("position","absolute");
-	$('.set_firstpart').css("display","none");
+	    $('.set_firstpart').css("display","none");
         $('.set_firstpart').css("width","100%");
         $('.set_firstpart').css("max-height",window.innerHeight - 40);
     }
@@ -22,7 +22,7 @@
          });
 
          $('.AddDevice').click(function(event) {
-             $('.togSet').animate({width: '5%'});
+             $('.togSet').animate({width: 57});
              addDeviceBut(event,this);
          });
 
@@ -59,7 +59,7 @@
         $(".par_id").css("position", "relative");
         $(".par_id").css("display", "inline-block");
 
-        $(".holder").css("height",window.innerHeight - 10);
+        $(".holder").css("height","100%");//window.innerHeight - 10);
         $(".holder").css('text-align','right');
         $(".htmap").css('width' ,'94%');
         $(".htmap").css("position", "relative");
@@ -104,7 +104,7 @@
         $(".par_id").css("height", "100%");
         $(".par_id").css("float", 'left');
         $(".par_id").css("position", 'relative');
-	$(".par_id").css("display", 'inline-block');
+	    $(".par_id").css("display", 'inline-block');
 	    
         $(".info_map").css("height",$('.par_id').height() - 60);
         $(".info_map").css("width", "100%");
@@ -350,20 +350,22 @@
     }
 
     function initElems () {
+        $('.map_holder').css("width",window.innerWidth - 60);
         heatmapInstance.data = [];
         showMap(heatmapInstance);
         $('.AddDevice').show();
 	    
         var img = new Image();
         img.src = 'kart.jpg';
-	$('#hidSet').css('height', 30);
+	    $('#hidSet').css('height', 30);
         $('.map_holder').css("height", "100%");
+
         $('.mapsDiv').css('overflow','scroll');
         $('.mapsDiv').css("max-height", "100%");
         $('.mapsDiv').css("height", "100%");
 
         $('.togSet').css('max-height', "100%");
-        $('.togSet').css('width', "5%");
+        $('.togSet').css('width', 57);
 
         $('.htmap').css('height', window.innerHeight);
         $('.htmap').css('width', '90%');
@@ -374,7 +376,7 @@
         $('.set_firstpart').css('width', "100%");
         $('.set_firstpart').css('display','none');
         
-	img.onload = function() {
+	    img.onload = function() {
             elems(img);
 
             $('#DynamicExtraFieldsContainer').css('display', 'block');
@@ -396,20 +398,20 @@
                     });
 
                     $('.map_holder').animate({
-                        width: '94%',
+                        width:  window.innerWidth - 60,
                         overflow:'scroll'
                     }, function () {
                         $('.map_holder').css('overflow', 'scroll');
                     });
 
-                    $('.togSet').animate({width:'5%'
+                    $('.togSet').animate({width:57
                     });
                 }
                 else {
                      $('.map_holder').animate({
                              width: '79%', overflow: 'scroll'})
-                    $('.set_firstpart').show();
-                    $('.togSet').animate({width: '20%'});
+                     $('.set_firstpart').show();
+                     $('.togSet').animate({width: '20%'});
                 }
             });
         }
@@ -447,7 +449,7 @@
         });
 
         $('.map_holder').animate({
-            width: '94%',
+            width: window.innerWidth - 60,
             overflow: 'scroll'
         });
 
@@ -607,7 +609,7 @@
 
         $('.AddDevice').unbind('click');
         $('.AddDevice').click(function(event) {
-            $('.togSet').animate({width: '5%'});
+            $('.togSet').animate({width: 57});
             addDeviceBut(event,this);
         });
 
