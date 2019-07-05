@@ -1,0 +1,237 @@
+body{
+    font-size: 11pt;
+    font: status-bar;
+    color: buttontext;
+    overflow: visible;
+
+}
+
+.hint-text{
+	  text-align:center;
+	  width:100%;
+}
+.real-hint {
+	  background-color: #fff;
+	  border: 1px solid #aaa;
+	  border-radius: 10px;
+	  display: none;
+	  padding: 5px 10px;
+	  position: absolute;
+	  width: 250px;
+	  z-index: 99;
+	}
+
+    .prm-cross {
+		background: url("/uploads/cross.png") no-repeat scroll right top rgba(0, 0, 0, 0);
+		cursor: pointer;
+		float: right;
+		height: 16px;
+		margin-top: 3px;
+		padding-left: 15px;
+		right: 10px;
+		width: 16px;
+	}
+
+	.real-show-hint {
+		cursor: pointer;
+		border-bottom: dashed 1px;
+		color: #8c0000;
+	}
+
+.map_holder{
+    overflow:hidden;
+}
+
+.mapsDiv{
+    display: inline-block;
+}
+
+.togSet{
+    float:left;
+    display:inline-block;
+    width:0;
+}
+
+#hidBut{
+    margin-right:0;
+    z-index:1;
+}
+
+#hidSet{
+    text-align: right;
+
+}
+
+
+#submit_sets{
+    text-align-last: center;
+    padding-top: 5px;
+
+}
+#input_ip{
+    width:80%;
+}
+
+
+.holder{
+    width:100%;
+    height:100%;
+    text-align:center;
+    position:absolute;
+    padding-top: 5px;
+    margin-top:-5px;
+    display: none;
+}
+
+.label-td{
+    padding-top: 5px;
+    width:30%;
+    text-align-last: left;
+
+
+}
+body{
+   margin:0;
+
+}
+
+input:read-only {
+    background-color: white;
+}
+
+.put_together{
+    width:35%;
+    padding:2%;
+    display: inline-block;
+    box-shadow: inset 0 5px #2296f3bf;
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: #b2b0b2;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.form_holder{
+    text-align: left;
+    position: relative;
+    width:100%;
+    display:inline-block;
+}
+.contain-block {
+    display:inline-block;
+    position: relative;
+
+    text-align: left;
+    width:100%
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.min_val, .max_val{
+    font-size:11pt ;
+}
+
+#addDynamicField{
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.browse-field{
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.DynamicExtraField{
+    font-size:10pt;
+    margin-bottom: 15px;
+}
+[type=textfield], [type=password]{
+
+    width:100%;
+    background-color: #f3f3f3;
+    margin-top:1%;
+    margin-bottom:1%;
+}
+
+[type=file] {
+    position: absolute;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    display:inline-block;
+}
+
+.button-like {
+    box-shadow: inset 0px 1.5px #2296f3bf;
+    font: status-bar;
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: #b2b0b2;
+    border-image: initial;
+    background-color: white;
+    font-size: 11pt;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-style-top:solid;
+    border-bottom-style: outset;
+    border-right-style: outset;
+    border-left-style: outset;
+    margin:2px;
+    margin-top: 3px;
+}
+
+.lab_tex{
+    width:100%;
+    text-align: right;
+}
+.tex{
+    width:70%;
+
+    display: inline-block;
+}
+
+.lab{
+    float: left;
+    display: inline-block;
+}
+
+.del_but{
+    width:100%;
+    text-align: right;
+}
+
+
+.small-l{
+   width:15%;
+}
+
+.small-r{
+    width:15%;
+}
+
+.toggle{
+    display:none;
+    border-top: #2296f3bf;
+    border-top-style: none;
+    border-top-width: 1.5px;
+    padding-top: 5px;
+    padding-left: 5%;
+    border-left: #2296f3bf;
+    border-left-style: solid;
+    border-left-width: 1.5px;
+
+
+}
+#ok_div{
+    text-align:right;
+    width:100%;
+    padding-top:10px;
+}
+.prev{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
