@@ -54,7 +54,7 @@
         var width = newImg.width;
         var im = $('.imdiv');
 
-        im[0].innerHTML = " <img class = 'backimg' src = " + newImg.src + " style ='width: 1334 px '></img>";
+        im[0].innerHTML = " <img class = 'backimg' src = " + newImg.src + " ></img>";// ='width: 1334 px '
         $(".par_id").css("width", inf_width);
         $(".par_id").css("position", "relative");
         $(".par_id").css("display", "inline-block");
