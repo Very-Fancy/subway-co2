@@ -50,8 +50,8 @@
 
     function elems(newImg){
         var inf_width = 80;
-        var height = Math.min(window.innerHeight, newImg.height);
-        var width = Math.min(window.innerWidth-150,newImg.width);
+        var height = Math.max(window.innerHeight, newImg.height);
+        var width = Math.max(window.innerWidth-150,newImg.width);
         var im = $('.imdiv');
 
         im[0].innerHTML = " <img class = 'backimg' src = " + newImg.src + " ></img>";// ='width: 1334 px '
@@ -65,12 +65,9 @@
         $('.mapsDiv').css('min-width',width+80);
         $(".holder").css("height",height);//window.innerHeight - 10);
         $(".holder").css('text-align','right');
-        $(".htmap").css('max-width' ,width);
+        $(".htmap").css('max-width' ,window.innerWidth - 150);
         $(".htmap").css('max-height' ,window.innerHeight);
         $(".htmap").css("position", "relative");
-
-        $('.map_holder').css("text-align",'left');
-        $('.map_holder').css("padding-right",0);
 
         $('.togSet').css('max-height', "100%");
         $('.max_val').css("width", "100%");
@@ -84,6 +81,7 @@
 
         $('.map_holder').css("position", "relative");
         $('.map_holder').css("display", "inline-block");
+        $('.map_holder').css("padding-right",0);
 
         $(".canvdiv").css("position", "absolute");
         $(".canvdiv").css("top", 0);
@@ -100,13 +98,12 @@
         canvas.height = parseInt($("#myCanvas").css('height'));
         context = canvas.getContext('2d');
 
-       $('.canvdiv').unbind('mousemove');
-
+        $('.canvdiv').unbind('mousemove');
         $('.canvdiv').mousemove(function(ev){
             showDegree(ev);
         });
 
-        $(".par_id").css("height", height);
+        $(".par_id").css("height", window.innerHeight);
         $(".par_id").css("float", 'left');
         $(".par_id").css("position", 'relative');
 	    $(".par_id").css("display", 'inline-block');
@@ -405,14 +402,12 @@
                     });
 
                     $('.togSet').animate({width:57});
-                    $('.htmap').css('max-width','100%');
+                    $('.htmap').animate({width: '100%'});
                 }
                 else {
                      $('.map_holder').animate({
-                             width: '79%'
-                     }, function () {
-                         $('.htmap').css('max-width', '79%');
-                     });
+                             width: '79%'});
+                    $('.htmap').animate({width: '79%'});
 
                      $('.set_firstpart').show();
                      $('.togSet').animate({width: '20%'});
@@ -451,7 +446,7 @@
         $('.set_firstpart').animate({
             width: 'toggle'
         });
-        $('.htmap').css('max-width','100%');
+        $('.htmap').animate({width: '100%'});
         $('.map_holder').animate({
             width: window.innerWidth - 60,
         });
@@ -509,7 +504,7 @@
            $('.map_holder').animate({
                width: '79%',
            });
-            $('.htmap').css('max-width','79%');
+
             $('.canvdiv').mousemove(function(ev){
                 showDegree(ev);
             });
