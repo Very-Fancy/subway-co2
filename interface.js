@@ -50,21 +50,26 @@
 
     function elems(newImg){
         var inf_width = 80;
-        var height = newImg.height;
-        var width = newImg.width;
+        var height = Math.min(window.innerHeight, newImg.height);
+        var width = Math.min(window.innerWidth-150,newImg.width);
         var im = $('.imdiv');
 
         im[0].innerHTML = " <img class = 'backimg' src = " + newImg.src + " ></img>";// ='width: 1334 px '
+        $('.backimg').css('min-width',width);
+        $('.backimg').css('min-height',height);
+        $('.imdiv').css('min-width',width);
+        $('.imdiv').css('min-height',height);
         $(".par_id").css("width", inf_width);
         $(".par_id").css("position", "relative");
         $(".par_id").css("display", "inline-block");
-
-        $(".holder").css("height","100%");//window.innerHeight - 10);
+        $('.mapsDiv').css('min-width',width+80);
+        $(".holder").css("height",height);//window.innerHeight - 10);
         $(".holder").css('text-align','right');
-        $(".htmap").css('width' ,'94%');
+        $(".htmap").css('max-width' ,width);
+        $(".htmap").css('max-height' ,window.innerHeight);
         $(".htmap").css("position", "relative");
 
-        $('.map_holder').css("text-align",'right');
+        $('.map_holder').css("text-align",'left');
         $('.map_holder').css("padding-right",0);
 
         $('.togSet').css('max-height', "100%");
@@ -95,13 +100,13 @@
         canvas.height = parseInt($("#myCanvas").css('height'));
         context = canvas.getContext('2d');
 
-        $('.canvdiv').unbind('mousemove');
+       $('.canvdiv').unbind('mousemove');
 
         $('.canvdiv').mousemove(function(ev){
             showDegree(ev);
         });
 
-        $(".par_id").css("height", "100%");
+        $(".par_id").css("height", height);
         $(".par_id").css("float", 'left');
         $(".par_id").css("position", 'relative');
 	    $(".par_id").css("display", 'inline-block');
@@ -152,25 +157,30 @@
 
     function heatmapClick(e,param){
         if (e.button == 0) {
-            var coords = getXY(e, $(param).offset());
+            var coords = getXY(e, $('.canvdiv').offset());
 
             for (var i = 0; i < heatmapInstance.data.length; i++) {
                 if (Math.pow((coords.x - heatmapInstance.data[i].x), 2) + Math.pow((coords.y - heatmapInstance.data[i].y), 2) <= Math.pow(heatmapInstance.data[i].radius, 2)) {
-                    $('.htmap').mousemove({e, i}, function (ev) {
-                        $('.canvdiv').unbind('mousemove');
+                    $('.canvdiv').mousemove({e, i}, function (ev) {
+                    $('.htmap').unbind('mousemove');
+                        $('.htmap').unbind('click');
+                       // $('.canvdiv').unbind('mousemove');
                         altText = undefined;
-                        var coords = getXY(ev,  $('.htmap').offset());
+                        var coords = getXY(ev,  $('.canvdiv').offset());
                         var tmppoint = heatmapInstance.data[i];
 
                         tmppoint.x = coords.x;
                         tmppoint.y = coords.y;
                         heatmapInstance.data[i] = tmppoint;
                         showMap(heatmapInstance);
-                        $('.htmap').click(heatmapInstance, function (e) {
-                            $('.htmap').unbind('mousemove');
-                            $('.canvdiv').mousemove(function(ev){
-                                showDegree(ev);
+
+                        $('.canvdiv').unbind('click');
+                        $('.canvdiv').click(heatmapInstance, function (e) {
+                            $('.canvdiv').unbind('mousemove');
+                            $('.canvdiv').mousemove(function(e){
+                                showDegree(e);
                             });
+
                         });
                     });
                     null;
@@ -309,7 +319,7 @@
     }
 
     function showDegree(e){
-        var coords = getXY(e,  $('.canvdiv').offset());
+        var coords = getXY(e, $('.canvdiv').offset());
 
         for (var i = 0; i < heatmapInstance.data.length; i++) {
             if (Math.pow((coords.x - heatmapInstance.data[i].x), 2) + Math.pow((coords.y - heatmapInstance.data[i].y), 2) <= Math.pow(heatmapInstance.data[i].radius, 2)) {
@@ -358,17 +368,10 @@
         var img = new Image();
         img.src = 'kart.jpg';
 	    $('#hidSet').css('height', 30);
-        $('.map_holder').css("height", "100%");
-
-        $('.mapsDiv').css('overflow','scroll');
-        $('.mapsDiv').css("max-height", "100%");
-        $('.mapsDiv').css("height", "100%");
 
         $('.togSet').css('max-height', "100%");
         $('.togSet').css('width', 57);
 
-        $('.htmap').css('height', window.innerHeight);
-        $('.htmap').css('width', '90%');
         $('.htmap').css('float', 'left');
         $('.htmap').css('overflow', 'scroll');
 
@@ -399,17 +402,18 @@
 
                     $('.map_holder').animate({
                         width:  window.innerWidth - 60,
-                        overflow:'scroll'
-                    }, function () {
-                        $('.map_holder').css('overflow', 'scroll');
                     });
 
-                    $('.togSet').animate({width:57
-                    });
+                    $('.togSet').animate({width:57});
+                    $('.htmap').css('max-width','100%');
                 }
                 else {
                      $('.map_holder').animate({
-                             width: '79%', overflow: 'scroll'})
+                             width: '79%'
+                     }, function () {
+                         $('.htmap').css('max-width', '79%');
+                     });
+
                      $('.set_firstpart').show();
                      $('.togSet').animate({width: '20%'});
                 }
@@ -447,10 +451,9 @@
         $('.set_firstpart').animate({
             width: 'toggle'
         });
-
+        $('.htmap').css('max-width','100%');
         $('.map_holder').animate({
             width: window.innerWidth - 60,
-            overflow: 'scroll'
         });
 
         var childval = ($(param).parent().parent().children().children().children().children());
@@ -483,22 +486,18 @@
         devs.push((childval.get(1).value));
         graphs.push(childval.get(3).value);
         devs_N++;
-
+        $('.htmap').unbind('mousemove');
         $('.htmap').mousemove(function (ev) {
-            $('.canvdiv').unbind('mousemove');
             altText = undefined;
-            var coords = getXY(ev,  $('.htmap').offset());
-            var new_point = getXY(ev,  $('.htmap').offset());
-
+            var coords = getXY(ev, $('.canvdiv').offset());
+            var new_point = getXY(ev, $('.canvdiv').offset());
             new_point.radius = 20;
             heatmapInstance.data.push(new_point);
             showMap(heatmapInstance);
             heatmapInstance.data.pop();
         });
 
-        $('.htmap').unbind('mousedown');
         $('.htmap').unbind('click');
-
         $('.htmap').click( function (e) {
             $('.htmap').unbind('mousemove');
             $('.htmap').unbind('click');
@@ -507,16 +506,16 @@
                 width:'20%'
             });
 
-            $('.map_holder').animate({
-                width: '79%',
-                overflow: 'scroll'
-            });
+           $('.map_holder').animate({
+               width: '79%',
+           });
+            $('.htmap').css('max-width','79%');
             $('.canvdiv').mousemove(function(ev){
                 showDegree(ev);
             });
 
             altText = undefined;
-            var new_point = getXY(e,  $('.htmap').offset());
+            var new_point = getXY(e,  $('.canvdiv').offset());
             var response = get_val(devs[devs_N - 1],graphs[devs_N-1]);
             new_point.value = parseFloat(response.val);//
 
@@ -547,7 +546,7 @@
             },1000);
 
             $('.htmap').unbind('click');
-            $('.htmap').mousedown(function(e){
+            $('.htmap').click(function(e){
                 heatmapClick(e,this);
             });
             new_point.radius = 20;
