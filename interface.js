@@ -381,10 +381,10 @@
 
             $('#DynamicExtraFieldsContainer').css('display', 'block');
             $('#DynamicExtraFieldsContainer').css('width', '100%');
-            $('#DynamicExtraFieldsContainer').css('max-height', '90%');
+            $('#DynamicExtraFieldsContainer').css('max-height', window.innerHeight-50);
 
             $(".put_together").css("width", "95%");
-            $(".put_together").css("max-height", "96%");
+            $(".put_together").css("max-height", window.innerHeight-50);
 
             $('#hidSet').css('min-width', 57);
             $('#hidSet').show();
