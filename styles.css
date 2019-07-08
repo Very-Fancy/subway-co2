@@ -218,11 +218,12 @@ input:read-only {
 }
 .tex{
     width:70%;
-
+	height:20px;
     display: inline-block;
 }
 
 .lab{
+	height:20px;
     float: left;
     display: inline-block;
 }
